@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Spinner, useToast } from '@chakra-ui/react';
+import { Box, Spinner, useToast } from '@chakra-ui/react';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import StoryDetail from '../../Components/StoryDetails/StoryDetail';
@@ -32,7 +32,12 @@ const StoryPage = () => {
     }, [id, toast]);
 
     if (loading) {
-        return <Spinner size="xl" />;
+        return (
+            <Box display={"flex"} justifyContent={"center"}
+                alignItems={"center"} mt={8}>
+                <Spinner size="xl" />;
+            </Box>
+        )
     }
 
     return <StoryDetail story={story} />;
