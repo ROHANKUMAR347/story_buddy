@@ -24,7 +24,7 @@ const MyStory = () => {
 
     const fetchStories = async () => {
         try {
-            const response = await axios.get('http://localhost:3000/story/userstory/', {
+            const response = await axios.get('https://story-buddy.onrender.com/story/userstory/', {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
@@ -55,7 +55,7 @@ const MyStory = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:3000/story/userstory/?id=${id}`, {
+            await axios.delete(`https://story-buddy.onrender.com/story/userstory/?id=${id}`, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },

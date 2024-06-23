@@ -15,7 +15,7 @@ const StoriesPage = () => {
     useEffect(() => {
         const fetchStories = async () => {
             try {
-                const response = await axios.get('http://localhost:3000/story/');
+                const response = await axios.get('https://story-buddy.onrender.com/story/');
                 setStories(response.data);
                 setFilteredStories(response.data);
                 setLoading(false); // Set loading to false once data is fetched

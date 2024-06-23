@@ -20,7 +20,7 @@ const MyStoryCard = ({ story, onDelete, onUpdate }) => {
 
     const handleUpdateSubmit = async () => {
         try {
-            await axios.put(`http://localhost:3000/story/userstory/?id=${story.id}`, updatedStory, {
+            await axios.put(`https://story-buddy.onrender.com/story/userstory/?id=${story.id}`, updatedStory, {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },

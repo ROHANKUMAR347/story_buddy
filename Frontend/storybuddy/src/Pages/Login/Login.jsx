@@ -29,7 +29,7 @@ function Login() {
         setIsLoading(true); // Set loading to true when login process starts
 
         try {
-            const response = await fetch(`http://localhost:3000/auth/login`, {
+            const response = await fetch(`https://story-buddy.onrender.com/auth/login`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

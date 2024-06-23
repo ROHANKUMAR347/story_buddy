@@ -22,7 +22,7 @@ const AddStory = () => {
                 throw new Error('User is not authenticated');
             }
 
-            await axios.post('http://localhost:3000/story/add', {
+            await axios.post('https://story-buddy.onrender.com/story/add', {
                 title,
                 category,
                 image,

@@ -14,7 +14,7 @@ const StoryPage = () => {
     useEffect(() => {
         const fetchStoryById = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/story/${id}`); // Correct URL
+                const response = await axios.get(`https://story-buddy.onrender.com/story/${id}`); // Correct URL
                 setStory(response.data);
                 setLoading(false);
             } catch (error) {
