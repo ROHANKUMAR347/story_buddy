@@ -211,7 +211,7 @@ MobileNavItem.propTypes = {
 const NAV_ITEMS = [
     {
         label: 'Home',
-        href: '/home',
+        href: '/',
     },
     {
         label: 'Stories',
