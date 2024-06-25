@@ -92,7 +92,7 @@ function Signup() {
             >
                 <Flex p={1} flex={1.5} align={"center"} gap={"20px"} justify={"center"}>
                     <Stack spacing={4} w={"full"} maxW={"md"} >
-                        <Heading fontSize={["2xl", "3xl", "4xl"]} color={"#B79B54"}>
+                        <Heading fontSize={["2xl", "3xl", "4xl"]} color={"teal"}>
                             Sign up to your account
                         </Heading>
                         <Box as="form" onSubmit={handleRegister}>
@@ -180,8 +180,8 @@ function Signup() {
                                     justify={"space-between"}
                                 ></Stack>
                                 <Button
-                                    _hover={{ bg: "white", color: "#B79B54" }}
-                                    backgroundColor={"#B79B54"}
+                                    _hover={{ bg: "white", color: "teal" }}
+                                    backgroundColor={"teal"}
                                     variant={"solid"}
                                     boxShadow={
                                         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
@@ -193,14 +193,14 @@ function Signup() {
                                     Sign Up
                                 </Button>
                                 <Button
-                                    _hover={{ bg: "#B79B54", color: "white" }}
+                                    _hover={{ bg: "white", color: "teal" }}
                                     variant={"solid"}
-                                    border={"2px solid #B79B54"}
+
                                     boxShadow={
                                         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
                                     }
-                                    color={"#B79B54"}
-                                    background={"white"}
+                                    color={"white"}
+                                    background={"teal"}
                                     borderRadius={"20px"}
                                     onClick={Signupbtn}
                                     type="button"

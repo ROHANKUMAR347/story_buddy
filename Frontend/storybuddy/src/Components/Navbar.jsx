@@ -1,5 +1,6 @@
 import { useState, useEffect, forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import logo from '../assets/storylogo-removebg-preview.png'
 import {
     Box,
     Flex,
@@ -18,6 +19,7 @@ import {
     Collapse,
     Popover,
     PopoverTrigger,
+    Image,
 } from '@chakra-ui/react';
 import { MoonIcon, SunIcon, HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
 import { FaUserCircle } from 'react-icons/fa';
@@ -76,7 +78,9 @@ export default function Navbar() {
                         display={{ md: 'none' }}
                         onClick={onToggle}
                     />
-                    <Box>Logo</Box>
+                    <Box height={"100%"}>
+                        <Image height={"100%"} src={`${logo}`} alt="logo" />
+                    </Box>
                     <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'center' }} alignItems={'center'}>
                         <DesktopNav display={{ base: 'none', md: 'flex' }} isLoggedIn={isLoggedIn} />
                     </Flex>
@@ -148,7 +152,7 @@ export default function Navbar() {
     );
 }
 
-const DesktopNav = ({ display, isLoggedIn }) => (
+const DesktopNav = ({ display }) => (
     <Stack direction={'row'} spacing={4} display={display}>
         {NAV_ITEMS.map((navItem) => (
             <Box key={navItem.label}>
@@ -159,11 +163,7 @@ const DesktopNav = ({ display, isLoggedIn }) => (
                 </Popover>
             </Box>
         ))}
-        {isLoggedIn && (
-            <Box>
-                <NavLink href={'/profile'}>Profile</NavLink>
-            </Box>
-        )}
+
     </Stack>
 );
 

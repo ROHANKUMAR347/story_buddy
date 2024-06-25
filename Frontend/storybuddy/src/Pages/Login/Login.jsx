@@ -75,7 +75,7 @@ function Login() {
         >
             <Flex p={8} flex={1} align={"center"} justify={"center"}>
                 <Stack spacing={4} w={"full"} maxW={"md"}>
-                    <Heading fontSize={"40px"} color={"#B79B54"}>
+                    <Heading fontSize={"40px"} color={"teal"}>
                         Sign in to your account
                     </Heading>
                     <Box as="form" onSubmit={handleLogin} flex={1} gap={"20px"}>
@@ -121,14 +121,13 @@ function Login() {
                                 justify={"space-between"}
                             ></Stack>
                             <Button
-                                _hover={{ bg: "white", color: "#B79B54" }}
+                                _hover={{ bg: "white", color: "teal" }}
                                 variant={"solid"}
-                                border={"2px solid #B79B54"}
                                 boxShadow={
                                     "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
                                 }
                                 color={"white"}
-                                background={"#B79B54"}
+                                background={"teal"}
                                 borderRadius={"20px"}
                                 type="submit"
                                 disabled={isLoading}
@@ -141,15 +140,15 @@ function Login() {
                             </Button>
                             <Link to="/signup">
                                 <Button
-                                    _hover={{ bg: "white", color: "#B79B54" }}
+                                    _hover={{ bg: "white", color: "teal" }}
                                     width={["100%", "100%"]}
                                     variant={"solid"}
-                                    border={"2px solid #B79B54"}
+
                                     boxShadow={
                                         "rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px"
                                     }
                                     color={"white"}
-                                    background={"#B79B54"}
+                                    background={"teal"}
                                     borderRadius={"20px"}
                                     type="submit"
                                 >

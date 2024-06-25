@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { Box, Heading, Grid, Select, useBreakpointValue, Button, Input, Skeleton, Flex } from '@chakra-ui/react';
 import axios from 'axios';
+import { debounce } from 'lodash';
 import StoryCard from '../../Components/StoryCard/StoryCard';
 
 const StoriesPage = () => {
@@ -9,8 +10,8 @@ const StoriesPage = () => {
     const [filter, setFilter] = useState('');
     const [searchQuery, setSearchQuery] = useState('');
     const [currentPage, setCurrentPage] = useState(1);
-    const [loading, setLoading] = useState(true); // State to track loading
-    const itemsPerPage = 12; // Number of items per page
+    const [loading, setLoading] = useState(true);
+    const itemsPerPage = 12;
 
     useEffect(() => {
         const fetchStories = async () => {
@@ -18,10 +19,10 @@ const StoriesPage = () => {
                 const response = await axios.get('https://story-buddy.onrender.com/story/');
                 setStories(response.data);
                 setFilteredStories(response.data);
-                setLoading(false); // Set loading to false once data is fetched
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching stories:', error);
-                setLoading(false); // Set loading to false in case of an error
+                setLoading(false);
             }
         };
 
@@ -34,10 +35,31 @@ const StoriesPage = () => {
         applyFilters(selectedCategory, searchQuery);
     };
 
+    const debouncedApplyFilters = useCallback(
+        debounce((category, query) => {
+            let filtered = stories;
+
+            if (category) {
+                filtered = filtered.filter(story => story.category.toLowerCase() === category.toLowerCase());
+            }
+
+            if (query) {
+                filtered = filtered.filter(story =>
+                    (story.title && story.title.toLowerCase().includes(query.toLowerCase())) ||
+                    (story.content && story.content.toLowerCase().includes(query.toLowerCase()))
+                );
+            }
+
+            setFilteredStories(filtered);
+            setCurrentPage(1);
+        }, 300), // Adjust the debounce delay as needed (e.g., 300ms)
+        [stories]
+    );
+
     const handleSearchChange = (e) => {
         const query = e.target.value;
         setSearchQuery(query);
-        applyFilters(filter, query);
+        debouncedApplyFilters(filter, query);
     };
 
     const applyFilters = (category, query) => {
@@ -55,17 +77,16 @@ const StoriesPage = () => {
         }
 
         setFilteredStories(filtered);
-        setCurrentPage(1); // Reset current page when filter or search changes
+        setCurrentPage(1);
     };
 
     const gridTemplateColumns = useBreakpointValue({
-        base: '1fr', // 1 card on mobile view
-        md: 'repeat(2, 1fr)', // 2 cards on tablet view
-        lg: 'repeat(3, 1fr)', // 3 cards on laptop view
-        xl: 'repeat(4, 1fr)', // 4 cards on desktop view
+        base: '1fr',
+        md: 'repeat(2, 1fr)',
+        lg: 'repeat(3, 1fr)',
+        xl: 'repeat(4, 1fr)',
     });
 
-    // Pagination
     const totalItems = filteredStories.length;
     const totalPages = Math.ceil(totalItems / itemsPerPage);
 
@@ -74,7 +95,6 @@ const StoriesPage = () => {
         pageNumbers.push(i);
     }
 
-    // Change page
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
     return (
@@ -117,7 +137,6 @@ const StoriesPage = () => {
                         ))
                 )}
             </Grid>
-            {/* Pagination buttons */}
             <Box mt={8} mb={8} textAlign="center">
                 <Button onClick={() => paginate(1)} mr={2} disabled={currentPage === 1}>
                     First
