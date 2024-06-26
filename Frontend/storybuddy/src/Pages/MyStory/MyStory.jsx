@@ -105,6 +105,11 @@ const MyStory = () => {
                 <option value="Fiction">Fiction</option>
                 <option value="Non-fiction">Non-fiction</option>
                 <option value="Poetry">Poetry</option>
+                <option value="Science">Science</option>
+                <option value="History">History</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="mystery">Mystery</option>
+                <option value="Mythology">Mythology</option>
             </Select>
             {loading ? (
                 <Grid templateColumns={gridTemplateColumns} gap={6}>
