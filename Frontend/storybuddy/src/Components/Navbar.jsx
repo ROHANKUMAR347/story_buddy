@@ -37,6 +37,8 @@ const NavLink = forwardRef(({ children, href }, ref) => (
         }}
         href={href}
         ref={ref}
+        fontSize={"18px"}
+        fontWeight={500}
     >
         {children}
     </Box>

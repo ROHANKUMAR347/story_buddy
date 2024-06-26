@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Box, Heading, Grid, Select, useBreakpointValue, useToast } from '@chakra-ui/react';
+import { Box, Heading, Grid, Select, useBreakpointValue, useToast, useColorModeValue, Skeleton } from '@chakra-ui/react';
 import axios from 'axios';
 import MyStoryCard from './MyStoryCard';
 
@@ -8,6 +8,7 @@ const MyStory = () => {
     const [filteredStories, setFilteredStories] = useState([]);
     const [filter, setFilter] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loading, setLoading] = useState(true);  // Added loading state
     const toast = useToast();
 
     useEffect(() => {
@@ -39,6 +40,8 @@ const MyStory = () => {
                 duration: 3000,
                 isClosable: true,
             });
+        } finally {
+            setLoading(false);  // Set loading to false after fetching data
         }
     };
 
@@ -84,10 +87,11 @@ const MyStory = () => {
         lg: 'repeat(3, 1fr)', // 3 cards on laptop view
         xl: 'repeat(4, 1fr)', // 4 cards on desktop view
     });
+    const bg = useColorModeValue("gray.100", "gray.800");
 
     if (!isLoggedIn) {
         return (
-            <Box p={4} display={"flex"} flexDir={"column"} textAlign={"center"} minH={"500px"}>
+            <Box p={4} display={"flex"} flexDir={"column"} textAlign={"center"} minH={"500px"} background={bg}>
                 <Heading as="h1" mb={4}>Login Your Account</Heading>
                 <p>You need to signin to access this page.</p>
             </Box>
@@ -95,18 +99,26 @@ const MyStory = () => {
     }
 
     return (
-        <Box p={4}>
-            <Heading as="h1" mb={4}>My Stories</Heading>
+        <Box p={4} background={bg}>
+            <Heading as="h1" mb={4} mt={6}>Your Stories</Heading>
             <Select placeholder="Filter by category" value={filter} onChange={handleFilterChange} mb={4}>
                 <option value="Fiction">Fiction</option>
                 <option value="Non-fiction">Non-fiction</option>
                 <option value="Poetry">Poetry</option>
             </Select>
-            <Grid templateColumns={gridTemplateColumns} gap={6}>
-                {filteredStories.map(story => (
-                    <MyStoryCard key={story.id} story={story} onDelete={handleDelete} onUpdate={fetchStories} />
-                ))}
-            </Grid>
+            {loading ? (
+                <Grid templateColumns={gridTemplateColumns} gap={6}>
+                    {Array.from({ length: 12 }).map((_, index) => (
+                        <Skeleton key={index} height="200px" borderRadius="md" />
+                    ))}
+                </Grid>
+            ) : (
+                <Grid templateColumns={gridTemplateColumns} gap={6}>
+                    {filteredStories.map(story => (
+                        <MyStoryCard key={story.id} story={story} onDelete={handleDelete} onUpdate={fetchStories} />
+                    ))}
+                </Grid>
+            )}
         </Box>
     );
 };

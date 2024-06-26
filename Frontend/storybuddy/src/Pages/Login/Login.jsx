@@ -50,7 +50,7 @@ function Login() {
                 });
                 localStorage.setItem("token", data.token); // Store token in localStorage
                 localStorage.setItem("username", data.username);
-                navigate("/home");
+                navigate("/");
             } else {
                 // Handle invalid credentials
                 alert("Invalid email or password");

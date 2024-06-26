@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Box, Button, FormControl, FormLabel, Input, Textarea, Select, useToast, Flex, Heading, ModalOverlay, Modal, Spinner, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure } from '@chakra-ui/react';
+import { Box, Button, FormControl, FormLabel, Input, Textarea, Select, useToast, Flex, Heading, ModalOverlay, Modal, Spinner, ModalContent, ModalHeader, ModalCloseButton, ModalBody, ModalFooter, useDisclosure, useColorModeValue } from '@chakra-ui/react';
 import axios from 'axios';
 
 const AddStory = () => {
@@ -50,11 +50,11 @@ const AddStory = () => {
             });
         }
     };
-
+    const bg = useColorModeValue("gray.100", "gray.800");
     return (
-        <Box>
+        <Box background={bg}>
             <Flex align="center" direction="column" minH="70vh" >
-                <Heading as="h1" size="xl" mb={8} color="white">
+                <Heading as="h1" size="xl" mb={8} mt={8} color={"teal"}>
                     Create Your Story
                 </Heading>
                 <Box width={["250px", "450px", "700px"]} mt={8} p={4} borderWidth="1px" borderRadius="lg" boxShadow="lg">

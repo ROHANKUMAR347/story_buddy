@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback } from 'react';
-import { Box, Heading, Grid, Select, useBreakpointValue, Button, Input, Skeleton, Flex } from '@chakra-ui/react';
+import { Box, Heading, Grid, Select, useBreakpointValue, Button, Input, Skeleton, Flex, useColorModeValue } from '@chakra-ui/react';
 import axios from 'axios';
 import { debounce } from 'lodash';
 import StoryCard from '../../Components/StoryCard/StoryCard';
@@ -96,9 +96,9 @@ const StoriesPage = () => {
     }
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
-
+    const bg = useColorModeValue("gray.100", "gray.800");
     return (
-        <Box p={4} mt={5}>
+        <Box p={4} background={bg}>
             <Heading as="h1" mb={4}>Stories</Heading>
             <Flex flexDir={["column", "column", "row"]} justify={"space-between"}>
                 <Select placeholder="Filter by category" value={filter} onChange={handleFilterChange} mb={4} width={["250px", "300px"]}>

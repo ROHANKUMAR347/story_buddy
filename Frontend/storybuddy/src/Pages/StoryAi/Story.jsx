@@ -7,7 +7,7 @@ import {
     Button,
     Text,
     Heading,
-    Container,
+
     IconButton,
     Stack,
     Tooltip,
@@ -17,6 +17,7 @@ import {
     Spacer,
     Textarea,
     useToast,
+    useColorModeValue,
 } from "@chakra-ui/react";
 import { FiVolume2, FiVolumeX } from "react-icons/fi";
 import axios from "axios";
@@ -125,13 +126,14 @@ const Story = () => {
         event.preventDefault();
         generateStory(event);
     };
+    const bg = useColorModeValue("gray.100", "gray.800");
     return (
-        <Container centerContent p={4} minHeight={"600px"}>
+        <Box p={4} minHeight={"600px"} background={bg} boxShadow={"inherit"}>
             <Box textAlign="center">
-                <Heading mb={4}>Story Generator</Heading>
+                <Heading mb={4} color={"teal"}>Story Generator</Heading>
                 <form onSubmit={generateStory}>
                     <VStack spacing={4} alignItems="center">
-                        <FormControl id="user-instructions">
+                        <FormControl id="user-instructions" p={6}>
                             <FormLabel>Enter Instructions</FormLabel>
                             <Textarea
                                 value={instructions}
@@ -147,7 +149,7 @@ const Story = () => {
                             isLoading={isLoading}
                             loadingText="Generating..."
                             disabled={isLoading}
-                            w="100%"
+
                         >
                             {isLoading ? "Generating..." : "Generate Story"}
                         </Button>
@@ -165,7 +167,7 @@ const Story = () => {
                 ) : (
                     story && (
                         <VStack align="start" spacing={4} mt={8}>
-                            <Box w="100%">
+                            <Box w="100%" p={5}>
                                 <Heading size="md">Generated Story</Heading>
                                 <Text mt={2} whiteSpace="pre-wrap">
                                     {story}
@@ -201,7 +203,7 @@ const Story = () => {
                     )
                 )}
             </Box>
-        </Container>
+        </Box>
     );
 };
 

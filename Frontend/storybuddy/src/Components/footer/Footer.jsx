@@ -6,14 +6,16 @@ import {
     Container,
     SimpleGrid,
     Heading,
+    useColorModeValue,
 
 } from "@chakra-ui/react";
 
 import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
 
 const Footer = () => {
+    const bg = useColorModeValue("gray.100", "gray.800");
     return (
-        <Box w="100%" p={4}  >
+        <Box w="100%" p={4} background={bg}  >
 
 
             <Stack
