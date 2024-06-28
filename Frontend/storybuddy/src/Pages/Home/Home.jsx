@@ -1,8 +1,14 @@
 import { Box, Button, Circle, Flex, Heading, Image, Text, useColorModeValue } from "@chakra-ui/react"
 import { motion } from 'framer-motion';
+import { useEffect, useState } from "react";
 
 const MotionCircle = motion(Circle);
-
+const images = [
+    "https://t4.ftcdn.net/jpg/02/82/73/11/360_F_282731179_RVTrSvnT3ado62ynbrh2XIuZvYnxQNri.jpg",
+    "https://images.ctfassets.net/fltupc9ltp8m/18ZW2FzH1ONDifUZ1SZdZM/dcd1772a5901a085bc19ef7776b0f50c/top-image.JPG?fm=webp&w=1900&q=80",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsv9yxlGt8NjjqL8Vw7JuNqeu_lqqLXw70K4Xnqx_weK7yfeg3w2zkX_KuEudw0s9-ckM&usqp=CAU",
+    "https://media.istockphoto.com/id/950605046/photo/multiethnic-children-in-a-circle.jpg?s=612x612&w=0&k=20&c=HawzWH8fBzsJSuzviuuS3iRhRPAwEW2POQTLQ3LzUfY="
+];
 const Home = () => {
     const bg = useColorModeValue("gray.100", "gray.800");
     const circleVariants = {
@@ -10,6 +16,17 @@ const Home = () => {
         animate: { scale: 1, opacity: 1 },
         hover: { scale: 1.2 },
     };
+    const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImageIndex(prevIndex => (prevIndex + 1) % images.length);
+        }, 5000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+
     return (
 
         <Box background={bg} >
@@ -81,7 +98,7 @@ const Home = () => {
             </Box>
             <Box background={bg} display="flex" flexDir={["column", "column", "row"]} gap={5} p={8} >
                 <Box display="flex" alignItems="center" justifyContent="center" width={["100%", "100%", "50%"]} >
-                    <Image src="https://t4.ftcdn.net/jpg/02/82/73/11/360_F_282731179_RVTrSvnT3ado62ynbrh2XIuZvYnxQNri.jpg" alt="StoryBuddy Image" />
+                    <Image width={["90%", "70%"]} src={images[currentImageIndex]} alt="StoryBuddy Image" />
                 </Box>
 
                 <Box paddingTop={20} width={["100%", "100%", "50%"]}>
