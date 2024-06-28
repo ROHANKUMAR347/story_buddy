@@ -110,6 +110,7 @@ const StoriesPage = () => {
                     <option value="fantasy">Fantasy</option>
                     <option value="mystery">Mystery</option>
                     <option value="Mythology">Mythology</option>
+                    <option value="Horror">Horror</option>
                 </Select>
                 <Input
                     placeholder="Search stories..."

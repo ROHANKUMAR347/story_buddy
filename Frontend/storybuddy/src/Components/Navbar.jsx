@@ -58,7 +58,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const token = localStorage.getItem('token');
-        console.log('Retrieved Token:', token);
+
         setIsLoggedIn(!!token);
     }, []);
 

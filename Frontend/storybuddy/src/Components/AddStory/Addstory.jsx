@@ -77,6 +77,7 @@ const AddStory = () => {
                                 <option value="mystery">Mystery</option>
                                 <option value="Mythology">Mythology</option>
                                 <option value="comedy">comedy</option>
+                                <option value="Horror">Horror</option>
                             </Select>
                         </FormControl>
 

@@ -1,10 +1,11 @@
 import PropTypes from 'prop-types';
-import { Box, Heading, Text, Image, Flex, Badge } from '@chakra-ui/react';
+import { Box, Heading, Text, Image, Flex, Badge, useColorModeValue } from '@chakra-ui/react';
 
 const StoryDetail = ({ story }) => {
+    const bg = useColorModeValue("gray.100", "gray.800");
     return (
         <Box
-            bg="white"
+
             borderWidth="1px"
             borderColor="gray.200"
             borderRadius="lg"
@@ -12,6 +13,7 @@ const StoryDetail = ({ story }) => {
             p={8}
             m={4}
             boxShadow="md"
+            background={bg}
         >
             <Flex direction={["column", "column", "row"]} mb={4} align="center">
                 <Image

@@ -12,11 +12,11 @@ const Home = () => {
     };
     return (
 
-        <Box background={bg}>
+        <Box background={bg} >
 
             <Box display={"flex"} flexDir={["column", "column", "row"]} p={4} justifyContent={"center"} alignItems={"center"} gap={10} fontWeight={500} >
                 <Box display={"flex"} flexDir={"column"} gap={10}>
-                    <Box display={"flex"} flexDir={"column"} gap={"10px"}>
+                    <Box display={"flex"} flexDir={"column"} gap={"10px"} textAlign={"start"}>
                         <Text fontFamily={"monospace"} color={"red"} fontSize={"25px"}>Welcome to Story Buddy!</Text>
                         <Text as={Heading} fontFamily={"cursive"} >
                             Unlock imagination through captivating tales.
@@ -32,11 +32,11 @@ const Home = () => {
             </Box>
 
             <Box bg={bg} pl={10} pr={10} mt={6}>
-                <Flex flexDir={"column"} alignItems="center" gap={4}>
+                <Flex flexDir={"column"} alignItems="center" gap={4} textAlign={"center"}>
                     <Heading as="h1" fontSize={["20px", "25px", "35px"]} mt={6} mb={4}>
                         Nurturing Young Minds
                     </Heading>
-                    <Text fontSize={["16px", "18px", "25px"]} mb={8} textAlign="center">
+                    <Text fontSize={["16px", "18px", "25px"]} mb={8} >
                         At Story Bot, we are dedicated to enriching the lives of children and families
                         through creative storytelling. Our platform supports mental wellness and learning
                         by fostering imagination and joy.
@@ -93,7 +93,12 @@ const Home = () => {
                     <Button bg="red" borderRadius="10px" px="30px" py="15px" color="white" p={[4, 8]}>More About Us</Button>
                 </Box>
             </Box>
-
+            <Box display={"flex"} flexDir={["column", "row"]} justifyContent={"space-between"} pt={4} pl={"50px"} pr={"50px"} pb={4} alignItems={"center"} height={"150px"} backgroundColor={"yellow"}>
+                <Box fontSize={"30px"} fontWeight={500}>Bring Fun Life To Your Kids</Box>
+                <Box>
+                    <Button bg="red" borderRadius="10px" px="30px" py="15px" color="white" p={[4, 8]}>GET STARTED</Button>
+                </Box>
+            </Box>
 
         </Box>
     )

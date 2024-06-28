@@ -43,7 +43,7 @@ const MyStoryCard = ({ story, onDelete, onUpdate }) => {
                 <Text mb={4}>{story.story_description.slice(0, 100)}...</Text>
                 <Box display={"flex"} flexDirection={{ base: 'column', md: 'row' }} justifyContent="space-between">
                     <Link to={`/storydetails/${story.id}`}>
-                        <Button mt={2} colorScheme="teal">
+                        <Button mt={2} colorScheme="teal" >
                             Read story
                         </Button>
                     </Link>
