@@ -174,7 +174,7 @@ const Story = () => {
                                 </Text>
                                 <Flex mt={4}>
                                     <Spacer />
-                                    <Stack direction="row" spacing={4}>
+                                    <Stack direction={["column", "row"]} spacing={4}>
                                         <Tooltip label={isSpeaking ? "Stop Speaking" : "Speak Story"}>
                                             <IconButton
                                                 icon={isSpeaking ? <FiVolumeX /> : <FiVolume2 />}
